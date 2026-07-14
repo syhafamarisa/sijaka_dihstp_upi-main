@@ -1,0 +1,23 @@
+Error saat migrate/login:
+SQLSTATE[HY000] [1130] Host 'localhost' is not allowed to connect to this MariaDB server
+
+Artinya: credential DB benar (root@127.0.0.1 bisa), tapi MariaDB menolak koneksi yang datang dari host 'localhost'.
+
+Solusi yang perlu dilakukan (pilih salah satu):
+1) Pastikan di .env hanya pakai DB_HOST=127.0.0.1 (bukan localhost). 
+   Di project ini, DB_HOST saat ini sudah 127.0.0.1, jadi kemungkinan query Artisan/Mysql client masih memakai 'localhost' (atau user MariaDB di-grant berbeda).
+
+2) Di phpMyAdmin / MySQL server, jalankan ini untuk memberi grant ke root dari localhost:
+   GRANT ALL PRIVILEGES ON peminjaman_ruangan.* TO 'root'@'localhost' IDENTIFIED BY 'password_yang_anda_pakai';
+   FLUSH PRIVILEGES;
+
+   Jika password root kosong, gunakan:
+   GRANT ALL PRIVILEGES ON peminjaman_ruangan.* TO 'root'@'localhost';
+   FLUSH PRIVILEGES;
+
+3) Restart MariaDB server (XAMPP MySQL): stop/start.
+
+Setelah itu ulang:
+- php artisan migrate --force
+- coba login lagi.
+

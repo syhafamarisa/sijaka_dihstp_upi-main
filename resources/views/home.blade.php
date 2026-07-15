@@ -246,22 +246,24 @@
                         <span>dit.inovasipuu@upi.edu</span>
                     </li>
                     <li class="flex items-start">
+                    <li class="flex items-start">
                         <i class="fas fa-phone mr-4 mt-1"></i>
                         <span>+62 851-1760-0477</span>
                     </li>
+
                     <li class="flex items-start">
                         <i class="fas fa-map-marker-alt mr-4 mt-1"></i>
-                        <span>Jl. Dr. Setiabudhi No. 229<br>Bandung 40154</span>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Jl.+Dr.+Setiabudhi+No.+229+Bandung+40154" target="_blank" rel="noopener noreferrer" class="hover:text-primary-600 transition-colors">
+                            Jl. Dr. Setiabudhi No. 229<br>Bandung 40154
+                        </a>
                     </li>
+
                     <li class="flex items-start">
-    <i class="fab fa-instagram mr-4 mt-1"></i>
-    <a href="https://www.instagram.com/inovasiupi?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" 
-       target="_blank" 
-       rel="noopener noreferrer" 
-       class="hover:text-primary-600 transition-colors">
-        @inovasiupi
-    </a>
-</li>
+                        <i class="fab fa-instagram mr-4 mt-1"></i>
+                        <a href="https://www.instagram.com/inovasiupi?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="hover:text-primary-600 transition-colors">
+                            @inovasiupi
+                        </a>
+                    </li>
                 </ul>
             </div>
             

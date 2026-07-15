@@ -7,13 +7,13 @@
 <div class="max-w-7xl mx-auto">
     <!-- Header dan Filter -->
     <div class="mb-6">
-        <div class="flex justify-between items-center mb-4">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4">
             <div>
-                <h1 class="text-3xl font-bold text-primary-900 elegant-font">Manajemen Peminjaman Ruangan</h1>
+                <h1 class="text-2xl md:text-3xl font-bold text-primary-900 elegant-font">Manajemen Peminjaman Ruangan</h1>
                 <p class="text-gray-600">Kelola semua permintaan peminjaman ruangan</p>
             </div>
-            <div class="flex space-x-3">
-                <button onclick="updateStatusRealTime()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold flex items-center space-x-2 transition-colors">
+            <div class="flex space-x-3 w-full sm:w-auto">
+                <button onclick="updateStatusRealTime()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold flex items-center justify-center space-x-2 transition-colors w-full sm:w-auto">
                     <i class="fas fa-sync-alt"></i>
                     <span>Update Status</span>
                 </button>
@@ -83,75 +83,75 @@
     </div>
 
     <!-- Statistics -->
-    <div class="grid grid-cols-1 md:grid-cols-6 gap-4 mb-6">
-        <div class="bg-white p-4 rounded-lg shadow border-l-4 border-blue-500">
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-6">
+        <div class="bg-white p-3 sm:p-4 rounded-lg shadow border-l-4 border-blue-500">
             <div class="flex items-center justify-between">
-                <div>
-                    <h3 class="text-sm font-semibold text-gray-600">Total</h3>
-                    <p class="text-2xl font-bold text-blue-600">{{ $stats['total'] }}</p>
+                <div class="min-w-0">
+                    <h3 class="text-xs sm:text-sm font-semibold text-gray-600 truncate">Total</h3>
+                    <p class="text-lg sm:text-2xl font-bold text-blue-600 truncate">{{ $stats['total'] }}</p>
                 </div>
-                <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                    <i class="fas fa-door-open text-blue-600"></i>
+                <div class="w-8 h-8 sm:w-10 sm:h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-door-open text-blue-600 text-xs sm:text-sm"></i>
                 </div>
             </div>
         </div>
         
-        <div class="bg-white p-4 rounded-lg shadow border-l-4 border-yellow-500">
+        <div class="bg-white p-3 sm:p-4 rounded-lg shadow border-l-4 border-yellow-500">
             <div class="flex items-center justify-between">
-                <div>
-                    <h3 class="text-sm font-semibold text-gray-600">Menunggu</h3>
-                    <p class="text-2xl font-bold text-yellow-600">{{ $stats['menunggu'] }}</p>
+                <div class="min-w-0">
+                    <h3 class="text-xs sm:text-sm font-semibold text-gray-600 truncate">Menunggu</h3>
+                    <p class="text-lg sm:text-2xl font-bold text-yellow-600 truncate">{{ $stats['menunggu'] }}</p>
                 </div>
-                <div class="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center">
-                    <i class="fas fa-clock text-yellow-600"></i>
+                <div class="w-8 h-8 sm:w-10 sm:h-10 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-clock text-yellow-600 text-xs sm:text-sm"></i>
                 </div>
             </div>
         </div>
         
-        <div class="bg-white p-4 rounded-lg shadow border-l-4 border-green-500">
+        <div class="bg-white p-3 sm:p-4 rounded-lg shadow border-l-4 border-green-500">
             <div class="flex items-center justify-between">
-                <div>
-                    <h3 class="text-sm font-semibold text-gray-600">Disetujui</h3>
-                    <p class="text-2xl font-bold text-green-600">{{ $stats['disetujui'] }}</p>
+                <div class="min-w-0">
+                    <h3 class="text-xs sm:text-sm font-semibold text-gray-600 truncate">Disetujui</h3>
+                    <p class="text-lg sm:text-2xl font-bold text-green-600 truncate">{{ $stats['disetujui'] }}</p>
                 </div>
-                <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
-                    <i class="fas fa-check text-green-600"></i>
+                <div class="w-8 h-8 sm:w-10 sm:h-10 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-check text-green-600 text-xs sm:text-sm"></i>
                 </div>
             </div>
         </div>
         
-        <div class="bg-white p-4 rounded-lg shadow border-l-4 border-red-500">
+        <div class="bg-white p-3 sm:p-4 rounded-lg shadow border-l-4 border-red-500">
             <div class="flex items-center justify-between">
-                <div>
-                    <h3 class="text-sm font-semibold text-gray-600">Ditolak</h3>
-                    <p class="text-2xl font-bold text-red-600">{{ $stats['ditolak'] }}</p>
+                <div class="min-w-0">
+                    <h3 class="text-xs sm:text-sm font-semibold text-gray-600 truncate">Ditolak</h3>
+                    <p class="text-lg sm:text-2xl font-bold text-red-600 truncate">{{ $stats['ditolak'] }}</p>
                 </div>
-                <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
-                    <i class="fas fa-times text-red-600"></i>
+                <div class="w-8 h-8 sm:w-10 sm:h-10 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-times text-red-600 text-xs sm:text-sm"></i>
                 </div>
             </div>
         </div>
 
-        <div class="bg-white p-4 rounded-lg shadow border-l-4 border-purple-500">
+        <div class="bg-white p-3 sm:p-4 rounded-lg shadow border-l-4 border-purple-500">
             <div class="flex items-center justify-between">
-                <div>
-                    <h3 class="text-sm font-semibold text-gray-600">Selesai</h3>
-                    <p class="text-2xl font-bold text-purple-600">{{ $stats['selesai'] }}</p>
+                <div class="min-w-0">
+                    <h3 class="text-xs sm:text-sm font-semibold text-gray-600 truncate">Selesai</h3>
+                    <p class="text-lg sm:text-2xl font-bold text-purple-600 truncate">{{ $stats['selesai'] }}</p>
                 </div>
-                <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
-                    <i class="fas fa-flag-checkered text-purple-600"></i>
+                <div class="w-8 h-8 sm:w-10 sm:h-10 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-flag-checkered text-purple-600 text-xs sm:text-sm"></i>
                 </div>
             </div>
         </div>
 
-        <div class="bg-white p-4 rounded-lg shadow border-l-4 border-gray-500">
+        <div class="bg-white p-3 sm:p-4 rounded-lg shadow border-l-4 border-gray-500">
             <div class="flex items-center justify-between">
-                <div>
-                    <h3 class="text-sm font-semibold text-gray-600">Dibatalkan</h3>
-                    <p class="text-2xl font-bold text-gray-600">{{ $stats['dibatalkan'] }}</p>
+                <div class="min-w-0">
+                    <h3 class="text-xs sm:text-sm font-semibold text-gray-600 truncate">Dibatalkan</h3>
+                    <p class="text-lg sm:text-2xl font-bold text-gray-600 truncate">{{ $stats['dibatalkan'] }}</p>
                 </div>
-                <div class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">
-                    <i class="fas fa-ban text-gray-600"></i>
+                <div class="w-8 h-8 sm:w-10 sm:h-10 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-ban text-gray-600 text-xs sm:text-sm"></i>
                 </div>
             </div>
         </div>

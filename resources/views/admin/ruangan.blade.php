@@ -6,22 +6,22 @@
 @section('content')
 
 {{-- ================= STATISTIK ================= --}}
-<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-    <div class="bg-white p-6 rounded-xl shadow border-l-4 border-blue-600">
-        <h3 class="text-sm text-gray-600">Total Ruangan</h3>
-        <p class="text-3xl font-bold">{{ $statistics['total'] }}</p>
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+    <div class="bg-white p-4 sm:p-6 rounded-xl shadow border-l-4 border-blue-600">
+        <h3 class="text-xs sm:text-sm text-gray-600">Total Ruangan</h3>
+        <p class="text-xl sm:text-3xl font-bold">{{ $statistics['total'] }}</p>
     </div>
-    <div class="bg-white p-6 rounded-xl shadow border-l-4 border-green-500">
-        <h3 class="text-sm text-gray-600">Tersedia</h3>
-        <p class="text-3xl font-bold text-green-600">{{ $statistics['tersedia'] }}</p>
+    <div class="bg-white p-4 sm:p-6 rounded-xl shadow border-l-4 border-green-500">
+        <h3 class="text-xs sm:text-sm text-gray-600">Tersedia</h3>
+        <p class="text-xl sm:text-3xl font-bold text-green-600">{{ $statistics['tersedia'] }}</p>
     </div>
-    <div class="bg-white p-6 rounded-xl shadow border-l-4 border-yellow-500">
-        <h3 class="text-sm text-gray-600">Dipinjam</h3>
-        <p class="text-3xl font-bold text-yellow-600">{{ $statistics['dipinjam'] }}</p>
+    <div class="bg-white p-4 sm:p-6 rounded-xl shadow border-l-4 border-yellow-500">
+        <h3 class="text-xs sm:text-sm text-gray-600">Dipinjam</h3>
+        <p class="text-xl sm:text-3xl font-bold text-yellow-600">{{ $statistics['dipinjam'] }}</p>
     </div>
-    <div class="bg-white p-6 rounded-xl shadow border-l-4 border-red-500">
-        <h3 class="text-sm text-gray-600">Maintenance</h3>
-        <p class="text-3xl font-bold text-red-600">{{ $statistics['maintenance'] }}</p>
+    <div class="bg-white p-4 sm:p-6 rounded-xl shadow border-l-4 border-red-500">
+        <h3 class="text-xs sm:text-sm text-gray-600">Maintenance</h3>
+        <p class="text-xl sm:text-3xl font-bold text-red-600">{{ $statistics['maintenance'] }}</p>
     </div>
 </div>
 

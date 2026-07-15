@@ -82,11 +82,11 @@
                 <p id="strength-text" class="text-xs text-gray-600 mt-2">Lemah</p>
             </div>
 
-            <div class="flex gap-4">
-                <button type="submit" class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+            <div class="flex flex-col sm:flex-row gap-4">
+                <button type="submit" class="w-full sm:w-auto px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition flex items-center justify-center">
                     <i class="fas fa-save mr-2"></i>Ubah Password
                 </button>
-                <a href="{{ route('admin.profile.show') }}" class="px-6 py-2 bg-gray-300 text-gray-800 rounded-lg hover:bg-gray-400 transition">
+                <a href="{{ route('admin.profile.show') }}" class="w-full sm:w-auto px-6 py-2 bg-gray-300 text-gray-800 rounded-lg hover:bg-gray-400 transition flex items-center justify-center">
                     <i class="fas fa-arrow-left mr-2"></i>Kembali
                 </a>
             </div>

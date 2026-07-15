@@ -5,14 +5,14 @@
 
 @section('content')
 <!-- Header -->
-<div class="flex justify-between items-center mb-6">
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
     <div>
-        <h1 class="text-3xl font-bold text-primary-900 elegant-font">Jadwal Peminjaman</h1>
+        <h1 class="text-2xl md:text-3xl font-bold text-primary-900 elegant-font">Jadwal Peminjaman</h1>
         <p class="text-gray-600">Lihat jadwal peminjaman terbaru yang telah disetujui</p>
     </div>
-    <div class="flex space-x-3">
+    <div class="flex space-x-3 w-full sm:w-auto">
         <a href="{{ route('admin.semua-jadwal') }}" 
-           class="bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg font-semibold flex items-center space-x-2 transition-colors">
+           class="bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg font-semibold flex items-center justify-center space-x-2 transition-colors w-full sm:w-auto">
             <i class="fas fa-list"></i>
             <span>Lihat Semua Jadwal</span>
         </a>
@@ -106,25 +106,25 @@
                     $lokasi = $isRuangan ? ($booking->ruangan->nama_ruangan ?? 'Ruangan') : 'Vidotron';
                 @endphp
 
-                <div class="p-6 hover:bg-gray-50 transition-colors">
-                    <div class="flex items-start justify-between">
-                        <div class="flex items-start space-x-4 flex-1">
-                            <div class="w-12 h-12 rounded-full flex items-center justify-center 
+                <div class="p-4 sm:p-6 hover:bg-gray-50 transition-colors">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                        <div class="flex items-start space-x-3 sm:space-x-4 flex-1 w-full min-w-0">
+                            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center flex-shrink-0
                                 @if($type == 'ruangan') bg-blue-100 text-blue-600 @else bg-green-100 text-green-600 @endif">
                                 <i class="@if($type == 'ruangan') fas fa-door-open @else fas fa-tv @endif"></i>
                             </div>
-                            <div class="flex-1">
-                                <div class="flex items-center space-x-3 mb-2">
-                                    <h4 class="font-semibold text-gray-900 text-lg">{{ $acara }}</h4>
-                                    <span class="px-2 py-1 text-xs rounded-full 
+                            <div class="flex-1 min-w-0">
+                                <div class="flex flex-col sm:flex-row sm:items-center space-y-1 sm:space-y-0 sm:space-x-3 mb-2">
+                                    <h4 class="font-semibold text-gray-900 text-base sm:text-lg truncate">{{ $acara }}</h4>
+                                    <span class="px-2 py-0.5 text-xs rounded-full w-max
                                         @if($type == 'ruangan') bg-blue-100 text-blue-800 @else bg-green-100 text-green-800 @endif">
                                         {{ $lokasi }}
                                     </span>
                                 </div>
-                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-gray-600">
-                                    <div class="flex items-center space-x-2">
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4 text-xs sm:text-sm text-gray-600">
+                                    <div class="flex items-center space-x-2 min-w-0">
                                         <i class="fas fa-user text-gray-400"></i>
-                                        <span>{{ $booking->user->name }}</span>
+                                        <span class="truncate">{{ $booking->user->name }}</span>
                                     </div>
                                     <div class="flex items-center space-x-2">
                                         <i class="fas fa-calendar text-gray-400"></i>
@@ -144,11 +144,11 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="text-right">
-                            <span class="px-3 py-1 bg-green-100 text-green-800 text-sm rounded-full font-medium">
+                        <div class="flex sm:flex-col items-center sm:items-end justify-between w-full sm:w-auto mt-2 sm:mt-0 border-t sm:border-t-0 pt-2 sm:pt-0">
+                            <span class="px-3 py-1 bg-green-100 text-green-800 text-xs sm:text-sm rounded-full font-medium">
                                 Disetujui
                             </span>
-                            <div class="mt-2 text-xs text-gray-500">
+                            <div class="sm:mt-2 text-xs text-gray-500">
                                 {{ \Carbon\Carbon::parse($booking->created_at)->diffForHumans() }}
                             </div>
                         </div>
@@ -166,13 +166,13 @@
 
     <!-- Footer dengan button Lihat Semua -->
     <div class="px-6 py-4 bg-gray-50 border-t border-gray-200">
-        <div class="flex justify-between items-center">
-            <p class="text-sm text-gray-600">
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p class="text-sm text-gray-600 text-center sm:text-left">
                 Menampilkan {{ min($recentBookings->count(), 3) }} jadwal terbaru dari total 
                 {{ ($stats['disetujui_ruangan'] ?? 0) + ($stats['disetujui_vidotron'] ?? 0) }} jadwal yang disetujui
             </p>
             <a href="{{ route('admin.semua-jadwal') }}" 
-               class="bg-primary-600 hover:bg-primary-700 text-white px-6 py-2 rounded-lg font-medium flex items-center space-x-2 transition-colors">
+               class="bg-primary-600 hover:bg-primary-700 text-white px-6 py-2 rounded-lg font-medium flex items-center justify-center space-x-2 transition-colors w-full sm:w-auto">
                 <i class="fas fa-list"></i>
                 <span>Lihat Semua Jadwal</span>
             </a>

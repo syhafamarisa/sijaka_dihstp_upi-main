@@ -34,7 +34,7 @@
     <!-- Navigation Simple -->
     <nav class="bg-primary-600 text-white shadow-lg">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="flex justify-between items-center py-4">
+            <div class="flex flex-col sm:flex-row justify-between items-center py-4 gap-4">
                 <div class="flex items-center space-x-4">
                     <!-- Logo dengan Kotak Pembatas -->
                     <div class="logo-container flex items-center justify-center w-10 h-10 rounded-md overflow-hidden">
@@ -48,13 +48,13 @@
                     </div>
                     <h1 class="text-xl font-bold elegant-font">Scheduler</h1>
                 </div>
-                <div class="flex items-center space-x-4">
-                    <a href="{{ route('admin.jadwal-pegawai') }}" class="bg-white text-primary-700 hover:bg-primary-50 px-4 py-2 rounded-lg font-semibold transition-colors flex items-center">
+                <div class="flex items-center space-x-4 w-full sm:w-auto justify-between sm:justify-end">
+                    <a href="{{ route('admin.jadwal-pegawai') }}" class="bg-white text-primary-700 hover:bg-primary-50 px-4 py-2 rounded-lg font-semibold transition-colors flex items-center justify-center text-sm sm:text-base">
                         <i class="fas fa-arrow-left mr-2"></i> Kembali
                     </a>
                     <form method="POST" action="/logout">
                         @csrf
-                        <button type="submit" class="bg-red-500 hover:bg-red-600 px-3 py-2 rounded transition-colors flex items-center">
+                        <button type="submit" class="bg-red-500 hover:bg-red-600 px-3 py-2 rounded transition-colors flex items-center justify-center text-sm sm:text-base">
                             <i class="fas fa-sign-out-alt mr-2"></i> Logout
                         </button>
                     </form>
@@ -66,17 +66,17 @@
     <!-- Main Content -->
     <main class="max-w-7xl mx-auto px-4 py-6">
         <!-- Header -->
-        <div class="flex justify-between items-center mb-6">
+        <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 mb-6">
             <div>
-                <h1 class="text-3xl font-bold text-primary-900 elegant-font">Daftar Kegiatan Kantor</h1>
+                <h1 class="text-2xl md:text-3xl font-bold text-primary-900 elegant-font">Daftar Kegiatan Kantor</h1>
                 <p class="text-gray-600">Semua jadwal kegiatan dan aktivitas kantor</p>
             </div>
-            <div class="flex space-x-4">
-                <div class="bg-white px-4 py-2 rounded-lg shadow">
+            <div class="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
+                <div class="bg-white px-4 py-2 rounded-lg shadow flex justify-between items-center sm:block">
                     <span class="text-sm text-gray-600">Total Peminjaman Ruangan:</span>
                     <span class="ml-2 font-bold text-primary-600">{{ $peminjamanCount }}</span>
                 </div>
-                <div class="bg-white px-4 py-2 rounded-lg shadow">
+                <div class="bg-white px-4 py-2 rounded-lg shadow flex justify-between items-center sm:block">
                     <span class="text-sm text-gray-600">Total Penyewaan Vidotron:</span>
                     <span class="ml-2 font-bold text-primary-600">{{ $penyewaanCount }}</span>
                 </div>

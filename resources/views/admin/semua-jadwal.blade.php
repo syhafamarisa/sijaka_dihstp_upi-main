@@ -47,19 +47,19 @@
 <body class="bg-gray-50 min-h-screen p-6">
     
     <!-- Header -->
-    <div class="flex justify-between items-center mb-6">
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
         <div>
-            <h1 class="text-3xl font-bold text-primary-900 elegant-font">Semua Jadwal Peminjaman</h1>
+            <h1 class="text-2xl md:text-3xl font-bold text-primary-900 elegant-font">Semua Jadwal Peminjaman</h1>
             <p class="text-gray-600">Kelola dan lihat semua jadwal peminjaman yang telah disetujui</p>
         </div>
-        <div class="flex space-x-3">
+        <div class="flex space-x-3 w-full sm:w-auto">
             <a href="{{ route('admin.jadwal-peminjaman') }}" 
-               class="bg-gray-600 hover:bg-gray-700 text-white px-6 py-3 rounded-lg font-semibold flex items-center space-x-2 transition-colors">
+               class="bg-gray-600 hover:bg-gray-700 text-white px-6 py-3 rounded-lg font-semibold flex items-center justify-center space-x-2 transition-colors w-full sm:w-auto">
                 <i class="fas fa-arrow-left"></i>
-                <span>Kembali ke Dashboard</span>
+                <span>Kembali</span>
             </a>
             <button onclick="printTable()" 
-                    class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold flex items-center space-x-2 transition-colors">
+                    class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold flex items-center justify-center space-x-2 transition-colors w-full sm:w-auto">
                 <i class="fas fa-print"></i>
                 <span>Cetak</span>
             </button>

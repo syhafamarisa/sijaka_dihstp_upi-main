@@ -41,7 +41,7 @@
     }
     
     .elegant-font {
-        font-family: "Oswald", sans-serif;
+        font-family: "Lato", sans-serif;
     }
 </style>
 
@@ -101,7 +101,7 @@
     <div class="max-w-7xl mx-auto px-4">
         <div class="text-center mb-16">
             <h2 class="text-4xl font-bold text-primary-800 mb-4"
-    style="font-family:'Oswald', sans-serif;">
+    style="font-family:'Lato', sans-serif;">
     Fitur Unggulan
 </h2>
             <p class="text-xl text-primary-600 max-w-3xl mx-auto">
@@ -236,17 +236,6 @@
                 <p class="text-primary-300 mb-6 max-w-md text-lg leading-relaxed">
                     Sistem Jadwal DIHTSP Terintegrasi dengan fitur peminjaman ruangan, video trone, dan manajemen jadwal pegawai untuk efisiensi maksimal.
                 </p>
-                <div class="flex space-x-4">
-                    <a href="#" class="w-12 h-12 rounded-xl bg-primary-800 flex items-center justify-center hover:bg-primary-700 transition-all duration-300 hover-lift">
-                        <i class="fab fa-facebook-f text-lg"></i>
-                    </a>
-                    <a href="#" class="w-12 h-12 rounded-xl bg-primary-800 flex items-center justify-center hover:bg-primary-700 transition-all duration-300 hover-lift">
-                        <i class="fab fa-twitter text-lg"></i>
-                    </a>
-                    <a href="#" class="w-12 h-12 rounded-xl bg-primary-800 flex items-center justify-center hover:bg-primary-700 transition-all duration-300 hover-lift">
-                        <i class="fab fa-instagram text-lg"></i>
-                    </a>
-                </div>
             </div>
             
             <div>
@@ -264,6 +253,15 @@
                         <i class="fas fa-map-marker-alt mr-4 mt-1"></i>
                         <span>Jl. Dr. Setiabudhi No. 229<br>Bandung 40154</span>
                     </li>
+                    <li class="flex items-start">
+    <i class="fab fa-instagram mr-4 mt-1"></i>
+    <a href="https://www.instagram.com/inovasiupi?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="hover:text-primary-600 transition-colors">
+        @inovasiupi
+    </a>
+</li>
                 </ul>
             </div>
             

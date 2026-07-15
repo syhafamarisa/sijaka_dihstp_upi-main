@@ -5,12 +5,12 @@
 
 @section('content')
 <!-- Header dengan Tombol Tambah -->
-<div class="flex justify-between items-center mb-6">
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
     <div>
-        <h1 class="text-3xl font-bold text-primary-900 elegant-font">Kelola Akun Pegawai & Admin</h1>
+        <h1 class="text-2xl md:text-3xl font-bold text-primary-900 elegant-font">Kelola Akun Pegawai & Admin</h1>
         <p class="text-gray-600">Buat dan kelola akun pegawai serta administrator</p>
     </div>
-    <button onclick="showAddModal()" class="bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg font-semibold flex items-center space-x-2 transition-all duration-300 hover:scale-105">
+    <button onclick="showAddModal()" class="bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg font-semibold flex items-center space-x-2 transition-all duration-300 hover:scale-105 w-full sm:w-auto justify-center">
         <i class="fas fa-plus"></i>
         <span>Tambah Akun Baru</span>
     </button>
@@ -54,7 +54,7 @@
             <i class="fas fa-filter mr-2"></i>Filter
         </button>
         @if(request()->has('search') || request()->has('role') || request()->has('status'))
-        <a href="{{ route('admin.users.index') }}" class="bg-gray-500 hover:bg-gray-600 text-white px-6 py-2 rounded-lg font-semibold transition-all duration-300 hover:scale-105 flex items-center">
+        <a href="{{ route('admin.users.index') }}" class="bg-gray-500 hover:bg-gray-600 text-white px-6 py-2 rounded-lg font-semibold transition-all duration-300 hover:scale-105 flex items-center justify-center">
             <i class="fas fa-times mr-2"></i>Reset
         </a>
         @endif
@@ -62,63 +62,61 @@
 </div>
 
 <!-- Stats Cards -->
-<div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
-    <div class="bg-white rounded-lg shadow p-4">
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-6">
+    <div class="bg-white rounded-lg shadow p-3 sm:p-4">
         <div class="flex items-center">
-            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                <i class="fas fa-users text-blue-600"></i>
+            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mr-3 sm:mr-4">
+                <i class="fas fa-users text-blue-600 text-sm sm:text-base"></i>
             </div>
-            <div>
-                <p class="text-sm text-gray-500">Total Akun</p>
-                <p class="text-2xl font-bold text-gray-900">{{ $stats['total'] }}</p>
+            <div class="min-w-0">
+                <p class="text-xs sm:text-sm text-gray-500 truncate">Total Akun</p>
+                <p class="text-lg sm:text-2xl font-bold text-gray-900 truncate">{{ $stats['total'] }}</p>
             </div>
         </div>
     </div>
-    <div class="bg-white rounded-lg shadow p-4">
+    <div class="bg-white rounded-lg shadow p-3 sm:p-4">
         <div class="flex items-center">
-            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
-                <i class="fas fa-user-check text-green-600"></i>
+            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mr-3 sm:mr-4">
+                <i class="fas fa-user-check text-green-600 text-sm sm:text-base"></i>
             </div>
-            <div>
-                <p class="text-sm text-gray-500">Aktif</p>
-                <p class="text-2xl font-bold text-gray-900">{{ $stats['active'] ?? 0 }}</p>
+            <div class="min-w-0">
+                <p class="text-xs sm:text-sm text-gray-500 truncate">Aktif</p>
+                <p class="text-lg sm:text-2xl font-bold text-gray-900 truncate">{{ $stats['active'] ?? 0 }}</p>
             </div>
         </div>
     </div>
-    <div class="bg-white rounded-lg shadow p-4">
+    <div class="bg-white rounded-lg shadow p-3 sm:p-4">
         <div class="flex items-center">
-            <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mr-4">
-                <i class="fas fa-user-times text-red-600"></i>
+            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0 mr-3 sm:mr-4">
+                <i class="fas fa-user-times text-red-600 text-sm sm:text-base"></i>
             </div>
-            <div>
-                <p class="text-sm text-gray-500">Nonaktif</p>
-                <p class="text-2xl font-bold text-gray-900">{{ $stats['inactive'] ?? 0 }}</p>
+            <div class="min-w-0">
+                <p class="text-xs sm:text-sm text-gray-500 truncate">Nonaktif</p>
+                <p class="text-lg sm:text-2xl font-bold text-gray-900 truncate">{{ $stats['inactive'] ?? 0 }}</p>
             </div>
         </div>
     </div>
 
-    <div class="bg-white rounded-lg shadow p-4">
+    <div class="bg-white rounded-lg shadow p-3 sm:p-4">
         <div class="flex items-center">
-            <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-4">
-                <i class="fas fa-user-shield text-purple-600"></i>
+            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0 mr-3 sm:mr-4">
+                <i class="fas fa-user-shield text-purple-600 text-sm sm:text-base"></i>
             </div>
-            <div>
-                <p class="text-sm text-gray-500">Admin</p>
-                <p class="text-2xl font-bold text-gray-900">{{ $stats['admin'] ?? 0 }}</p>
+            <div class="min-w-0">
+                <p class="text-xs sm:text-sm text-gray-500 truncate">Admin</p>
+                <p class="text-lg sm:text-2xl font-bold text-gray-900 truncate">{{ $stats['admin'] ?? 0 }}</p>
             </div>
-
         </div>
     </div>
-    <div class="bg-white rounded-lg shadow p-4">
+    <div class="bg-white rounded-lg shadow p-3 sm:p-4">
         <div class="flex items-center">
-            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                <i class="fas fa-user-tie text-blue-600"></i>
+            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mr-3 sm:mr-4">
+                <i class="fas fa-user-tie text-blue-600 text-sm sm:text-base"></i>
             </div>
-            <div>
-                <p class="text-sm text-gray-500">Pegawai</p>
-                <p class="text-2xl font-bold text-gray-900">{{ $stats['pegawai'] ?? 0 }}</p>
+            <div class="min-w-0">
+                <p class="text-xs sm:text-sm text-gray-500 truncate">Pegawai</p>
+                <p class="text-lg sm:text-2xl font-bold text-gray-900 truncate">{{ $stats['pegawai'] ?? 0 }}</p>
             </div>
-
         </div>
     </div>
 </div>

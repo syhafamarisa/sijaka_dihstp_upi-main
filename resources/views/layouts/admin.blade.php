@@ -7,15 +7,18 @@
     <title>@yield('title', 'Admin Dashboard') - SIJAKAPRANA</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
         html, body {
             font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif !important;
+            box-sizing: border-box;
         }
-        /* Sidebar lebih rapi */
+        *, *::before, *::after {
+            box-sizing: inherit;
+        }
         #sidebar {
             height: 100vh;
             position: sticky;
@@ -25,7 +28,7 @@
             overflow-y: auto;
         }
         .elegant-font {
-            font-family: 'Oswald', sans-serif;
+            font-family: 'Lato', sans-serif;
             font-weight: 600;
             letter-spacing: 0.5px;
         }
@@ -36,7 +39,6 @@
             transform: scale(1.05);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
-        /* Nav item hover & active */
         .nav-item {
             transition: all 0.2s ease;
             border-radius: 0.5rem;
@@ -48,15 +50,7 @@
             background-color: rgba(255,255,255,0.2);
             box-shadow: inset 4px 0 0 #fff;
         }
-        /* Responsive table */
-        @media (max-width: 640px) {
-            .responsive-table {
-                display: block;
-                overflow-x: auto;
-                white-space: nowrap;
-            }
-        }
-        /* Dark mode overrides */
+        /* Dark mode overrides (tetap sama) */
         html.dark body {
             background-color: #0f172a !important;
             color: #f1f5f9 !important;
@@ -140,6 +134,13 @@
         html.dark .md\:hidden.bg-white a.text-primary-600 {
             color: #f87171 !important;
         }
+
+        /* Paksakan sidebar desktop disembunyikan di layar < 768px */
+@media (max-width: 767px) {
+    #sidebar {
+        display: none !important;
+    }
+}
     </style>
 
     <script>
@@ -167,7 +168,7 @@
 </head>
 <body class="bg-gray-50">
     <div class="flex h-screen">
-        <!-- =============== SIDEBAR DESKTOP =============== -->
+        <!-- =============== SIDEBAR DESKTOP (muncul di layar >= 768px) =============== -->
         <div id="sidebar" class="hidden md:flex w-64 bg-primary-700 text-white shadow flex-col flex-shrink-0">
             <!-- Brand -->
             <div class="p-5 border-b border-primary-600 flex items-center space-x-3">
@@ -189,7 +190,6 @@
             <!-- Menu -->
             <nav class="flex-1 px-3 py-4 overflow-y-auto">
                 <ul class="space-y-1">
-                    <!-- Dashboard -->
                     <li>
                         <a href="{{ route('admin.dashboard') }}" 
                            class="nav-item flex items-center space-x-3 px-4 py-2.5 {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
@@ -197,8 +197,6 @@
                             <span>Dashboard</span>
                         </a>
                     </li>
-
-                    <!-- Manajemen Akun -->
                     <li>
                         <a href="{{ route('admin.users.index') }}" 
                            class="nav-item flex items-center space-x-3 px-4 py-2.5 {{ request()->routeIs('admin.users.*') ? 'active' : '' }}">
@@ -206,8 +204,6 @@
                             <span>Manajemen Akun</span>
                         </a>
                     </li>
-
-                    <!-- Manajemen Ruangan -->
                     <li>
                         <a href="{{ route('admin.ruangan.index') }}" 
                            class="nav-item flex items-center space-x-3 px-4 py-2.5 {{ request()->routeIs('admin.ruangan.*') ? 'active' : '' }}">
@@ -215,8 +211,6 @@
                             <span>Manajemen Ruangan</span>
                         </a>
                     </li>
-
-                    <!-- Jadwal Kegiatan -->
                     <li>
                         <a href="{{ route('admin.jadwal.index') }}" 
                            class="nav-item flex items-center space-x-3 px-4 py-2.5 {{ request()->routeIs('admin.jadwal.*') ? 'active' : '' }}">
@@ -224,8 +218,6 @@
                             <span>Jadwal Kegiatan</span>
                         </a>
                     </li>
-
-                    <!-- Jadwal Pegawai -->
                     <li>
                         <a href="{{ route('admin.jadwal-pegawai') }}" 
                            class="nav-item flex items-center space-x-3 px-4 py-2.5 {{ request()->routeIs('admin.jadwal-pegawai') ? 'active' : '' }}">
@@ -233,8 +225,6 @@
                             <span>Jadwal Pegawai</span>
                         </a>
                     </li>
-
-                    <!-- Jadwal Peminjaman -->
                     <li>
                         <a href="{{ route('admin.jadwal-peminjaman') }}" 
                            class="nav-item flex items-center space-x-3 px-4 py-2.5 {{ request()->routeIs('admin.jadwal-peminjaman') ? 'active' : '' }}">
@@ -242,8 +232,6 @@
                             <span>Jadwal Peminjaman</span>
                         </a>
                     </li>
-
-                    <!-- Peminjaman Ruangan -->
                     <li>
                         <a href="{{ route('admin.peminjaman-ruangan.index') }}" 
                            class="nav-item flex items-center space-x-3 px-4 py-2.5 {{ request()->routeIs('admin.peminjaman-ruangan.*') ? 'active' : '' }}">
@@ -251,8 +239,6 @@
                             <span>Peminjaman Ruangan</span>
                         </a>
                     </li>
-
-                    <!-- Peminjaman Video -->
                     <li>
                         <a href="{{ route('admin.peminjaman-video') }}" 
                            class="nav-item flex items-center space-x-3 px-4 py-2.5 {{ request()->routeIs('admin.peminjaman-video') ? 'active' : '' }}">
@@ -283,9 +269,12 @@
             </div>
         </div>
 
-        <!-- =============== SIDEBAR MOBILE =============== -->
-        <div id="sidebarOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden md:hidden"></div>
-        <div id="mobileSidebar" class="fixed inset-y-0 left-0 w-64 bg-primary-700 text-white shadow-lg transform -translate-x-full transition-transform duration-300 ease-in-out z-50 md:hidden flex flex-col">
+        <!-- =============== SIDEBAR MOBILE (AWALNYA TERSEMBUNYI) =============== -->
+        <!-- Overlay gelap -->
+        <div id="sidebarOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+
+        <!-- Sidebar mobile -->
+        <div id="mobileSidebar" class="fixed inset-y-0 left-0 w-64 bg-primary-700 text-white shadow-lg z-50 hidden flex-col">
             <!-- Brand -->
             <div class="p-5 border-b border-primary-600 flex items-center justify-between">
                 <div class="flex items-center space-x-3">
@@ -312,49 +301,49 @@
             <nav class="flex-1 px-3 py-4 overflow-y-auto">
                 <ul class="space-y-1">
                     <li>
-                        <a href="{{ route('admin.dashboard') }}" class="nav-item flex items-center space-x-3 px-4 py-2.5 {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}" onclick="closeMobileSidebar()">
+                        <a href="{{ route('admin.dashboard') }}" class="nav-item flex items-center space-x-3 px-4 py-2.5 {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
                             <i class="fas fa-tachometer-alt w-5 text-center"></i>
                             <span>Dashboard</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.users.index') }}" class="nav-item flex items-center space-x-3 px-4 py-2.5 {{ request()->routeIs('admin.users.*') ? 'active' : '' }}" onclick="closeMobileSidebar()">
+                        <a href="{{ route('admin.users.index') }}" class="nav-item flex items-center space-x-3 px-4 py-2.5 {{ request()->routeIs('admin.users.*') ? 'active' : '' }}">
                             <i class="fas fa-users-cog w-5 text-center"></i>
                             <span>Manajemen Akun</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.ruangan.index') }}" class="nav-item flex items-center space-x-3 px-4 py-2.5 {{ request()->routeIs('admin.ruangan.*') ? 'active' : '' }}" onclick="closeMobileSidebar()">
+                        <a href="{{ route('admin.ruangan.index') }}" class="nav-item flex items-center space-x-3 px-4 py-2.5 {{ request()->routeIs('admin.ruangan.*') ? 'active' : '' }}">
                             <i class="fas fa-building w-5 text-center"></i>
                             <span>Manajemen Ruangan</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.jadwal.index') }}" class="nav-item flex items-center space-x-3 px-4 py-2.5 {{ request()->routeIs('admin.jadwal.*') ? 'active' : '' }}" onclick="closeMobileSidebar()">
+                        <a href="{{ route('admin.jadwal.index') }}" class="nav-item flex items-center space-x-3 px-4 py-2.5 {{ request()->routeIs('admin.jadwal.*') ? 'active' : '' }}">
                             <i class="fas fa-calendar-plus w-5 text-center"></i>
                             <span>Jadwal Kegiatan</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.jadwal-pegawai') }}" class="nav-item flex items-center space-x-3 px-4 py-2.5 {{ request()->routeIs('admin.jadwal-pegawai') ? 'active' : '' }}" onclick="closeMobileSidebar()">
+                        <a href="{{ route('admin.jadwal-pegawai') }}" class="nav-item flex items-center space-x-3 px-4 py-2.5 {{ request()->routeIs('admin.jadwal-pegawai') ? 'active' : '' }}">
                             <i class="fas fa-user-clock w-5 text-center"></i>
                             <span>Jadwal Pegawai</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.jadwal-peminjaman') }}" class="nav-item flex items-center space-x-3 px-4 py-2.5 {{ request()->routeIs('admin.jadwal-peminjaman') ? 'active' : '' }}" onclick="closeMobileSidebar()">
+                        <a href="{{ route('admin.jadwal-peminjaman') }}" class="nav-item flex items-center space-x-3 px-4 py-2.5 {{ request()->routeIs('admin.jadwal-peminjaman') ? 'active' : '' }}">
                             <i class="fas fa-calendar-check w-5 text-center"></i>
                             <span>Jadwal Peminjaman</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.peminjaman-ruangan.index') }}" class="nav-item flex items-center space-x-3 px-4 py-2.5 {{ request()->routeIs('admin.peminjaman-ruangan.*') ? 'active' : '' }}" onclick="closeMobileSidebar()">
+                        <a href="{{ route('admin.peminjaman-ruangan.index') }}" class="nav-item flex items-center space-x-3 px-4 py-2.5 {{ request()->routeIs('admin.peminjaman-ruangan.*') ? 'active' : '' }}">
                             <i class="fas fa-door-open w-5 text-center"></i>
                             <span>Peminjaman Ruangan</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.peminjaman-video') }}" class="nav-item flex items-center space-x-3 px-4 py-2.5 {{ request()->routeIs('admin.peminjaman-video') ? 'active' : '' }}" onclick="closeMobileSidebar()">
+                        <a href="{{ route('admin.peminjaman-video') }}" class="nav-item flex items-center space-x-3 px-4 py-2.5 {{ request()->routeIs('admin.peminjaman-video') ? 'active' : '' }}">
                             <i class="fas fa-video w-5 text-center"></i>
                             <span>Peminjaman Video</span>
                         </a>
@@ -383,19 +372,20 @@
         </div>
 
         <!-- =============== KONTEN UTAMA =============== -->
-        <div class="flex-1 flex flex-col overflow-hidden w-full">
+        <div class="flex-1 flex flex-col overflow-hidden w-full min-w-0">
             <!-- Top Bar -->
             <header class="bg-white shadow-sm border-b border-gray-200 flex-shrink-0">
                 <div class="flex justify-between items-center px-4 md:px-6 py-3">
-                    <div class="flex items-center space-x-4">
-                        <button id="openSidebar" class="md:hidden text-gray-600 hover:text-primary-600">
+                    <div class="flex items-center space-x-4 min-w-0">
+                        <!-- Tombol hamburger (hanya di mobile) -->
+                        <button id="openSidebar" class="md:hidden text-gray-600 hover:text-primary-600 flex-shrink-0">
                             <i class="fas fa-bars text-xl"></i>
                         </button>
-                        <h2 class="text-lg md:text-2xl font-bold text-primary-900 elegant-font">
+                        <h2 class="text-base md:text-2xl font-bold text-primary-900 elegant-font truncate max-w-[200px] sm:max-w-none">
                             @yield('page-title', 'Admin Dashboard')
                         </h2>
                     </div>
-                    <div class="flex items-center space-x-2 md:space-x-4">
+                    <div class="flex items-center space-x-2 md:space-x-4 flex-shrink-0">
                         <!-- Notifikasi -->
                         <div class="relative">
                             <button id="notificationBtn" class="p-2 text-gray-600 hover:text-primary-600 relative transition-colors">
@@ -457,7 +447,7 @@
                         </div>
 
                         <!-- User avatar mobile -->
-                        <div class="md:hidden flex items-center">
+                        <div class="md:hidden flex items-center flex-shrink-0">
                             <div class="w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center">
                                 <i class="fas fa-user text-white text-sm"></i>
                             </div>
@@ -466,8 +456,8 @@
                 </div>
             </header>
 
-            <!-- Main Content -->
-            <main class="flex-1 overflow-y-auto p-4 md:p-6">
+            <!-- Main Content - DITAMBAHKAN overflow-x-auto agar konten lebar bisa di-scroll -->
+            <main class="flex-1 overflow-y-auto overflow-x-auto p-4 md:p-6 w-full max-w-full">
                 @yield('content')
             </main>
 
@@ -497,54 +487,64 @@
 
     <!-- =============== JAVASCRIPT =============== -->
     <script>
-        // Mobile sidebar toggle
+        // ====== SIDEBAR MOBILE TOGGLE (menggunakan hidden/flex) ======
         const openSidebarBtn = document.getElementById('openSidebar');
         const closeSidebarBtn = document.getElementById('closeSidebar');
         const mobileSidebar = document.getElementById('mobileSidebar');
         const sidebarOverlay = document.getElementById('sidebarOverlay');
 
         function openMobileSidebar() {
-            mobileSidebar.classList.remove('-translate-x-full');
-            sidebarOverlay.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
+            // hanya aktif di layar < 768px
+            if (window.innerWidth < 768) {
+                mobileSidebar.classList.remove('hidden');
+                mobileSidebar.classList.add('flex');
+                sidebarOverlay.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
         }
 
         function closeMobileSidebar() {
-            mobileSidebar.classList.add('-translate-x-full');
+            mobileSidebar.classList.add('hidden');
+            mobileSidebar.classList.remove('flex');
             sidebarOverlay.classList.add('hidden');
             document.body.style.overflow = 'auto';
         }
 
+        // Event listener tombol buka
         if (openSidebarBtn) {
             openSidebarBtn.addEventListener('click', openMobileSidebar);
         }
+
+        // Event listener tombol tutup (X)
         if (closeSidebarBtn) {
             closeSidebarBtn.addEventListener('click', closeMobileSidebar);
         }
+
+        // Klik overlay tutup
         if (sidebarOverlay) {
             sidebarOverlay.addEventListener('click', closeMobileSidebar);
         }
 
-        // Tutup sidebar mobile saat klik link di dalamnya
-        document.querySelectorAll('#mobileSidebar a').forEach(link => {
-            link.addEventListener('click', closeMobileSidebar);
-        });
-
-        // Responsive: tutup saat layar >= 768px
+        // Tutup otomatis saat layar >= 768px (misal user rotate HP)
         window.addEventListener('resize', function() {
             if (window.innerWidth >= 768) {
                 closeMobileSidebar();
             }
         });
 
-        // Tutup dengan ESC
+        // Tutup dengan tombol ESC
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 closeMobileSidebar();
             }
         });
 
-        // Dropdown notifikasi & pengaturan
+        // Tutup sidebar saat link di dalamnya diklik (backup jika onclick tidak jalan)
+        document.querySelectorAll('#mobileSidebar a').forEach(function(link) {
+            link.addEventListener('click', closeMobileSidebar);
+        });
+
+        // ====== DROPDOWN NOTIFIKASI & SETTINGS ======
         const notificationBtn = document.getElementById('notificationBtn');
         const notificationDropdown = document.getElementById('notificationDropdown');
         const settingsBtn = document.getElementById('settingsBtn');

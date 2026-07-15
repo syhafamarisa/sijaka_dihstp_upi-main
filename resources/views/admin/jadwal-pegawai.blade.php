@@ -157,13 +157,13 @@
 @endphp
 
 <!-- Header -->
-<div class="flex justify-between items-center mb-6">
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
     <div>
-        <h1 class="text-3xl font-bold text-primary-900 elegant-font">Jadwal Kegiatan Kantor</h1>
+        <h1 class="text-2xl md:text-3xl font-bold text-primary-900 elegant-font">Jadwal Kegiatan Kantor</h1>
         <p class="text-gray-600">Kelola jadwal kegiatan dan aktivitas kantor</p>
     </div>
-    <div class="flex space-x-3">
-        <a href="{{ route('pegawai.jadwal.create') }}" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold flex items-center space-x-2 transition-colors">
+    <div class="flex space-x-3 w-full sm:w-auto">
+        <a href="{{ route('pegawai.jadwal.create') }}" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold flex items-center justify-center space-x-2 transition-colors w-full sm:w-auto">
             <i class="fas fa-plus"></i>
             <span>Buat Jadwal</span>
         </a>
@@ -171,18 +171,18 @@
 </div>
 
 <!-- Calendar View -->
-<div class="bg-white p-6 rounded-lg shadow mb-6">
-    <div class="flex justify-between items-center mb-6">
+<div class="bg-white p-4 sm:p-6 rounded-lg shadow mb-6">
+    <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 mb-6">
         <div class="flex items-center space-x-4">
             <a href="?month={{ $prevMonth->month }}&year={{ $prevMonth->year }}" class="p-2 hover:bg-gray-100 rounded-lg">
                 <i class="fas fa-chevron-left text-gray-600"></i>
             </a>
-            <h3 class="text-lg font-semibold text-primary-900">Kalender Jadwal {{ $dateObj->translatedFormat('F Y') }}</h3>
+            <h3 class="text-base sm:text-lg font-semibold text-primary-900">Kalender Jadwal {{ $dateObj->translatedFormat('F Y') }}</h3>
             <a href="?month={{ $nextMonth->month }}&year={{ $nextMonth->year }}" class="p-2 hover:bg-gray-100 rounded-lg">
                 <i class="fas fa-chevron-right text-gray-600"></i>
             </a>
         </div>
-        <div class="flex items-center space-x-4">
+        <div class="flex items-center space-x-4 flex-wrap gap-y-2">
             <div class="flex items-center space-x-2">
                 <span class="w-3 h-3 bg-red-500 rounded-full"></span>
                 <span class="text-xs">Jadwal Kantor</span>
@@ -194,14 +194,14 @@
         </div>
     </div>
     
-    <div class="grid grid-cols-7 gap-2 mb-4">
-        <div class="text-center font-semibold text-gray-600 py-2">Senin</div>
-        <div class="text-center font-semibold text-gray-600 py-2">Selasa</div>
-        <div class="text-center font-semibold text-gray-600 py-2">Rabu</div>
-        <div class="text-center font-semibold text-gray-600 py-2">Kamis</div>
-        <div class="text-center font-semibold text-gray-600 py-2">Jumat</div>
-        <div class="text-center font-semibold text-gray-600 py-2">Sabtu</div>
-        <div class="text-center font-semibold text-gray-600 py-2">Minggu</div>
+    <div class="grid grid-cols-7 gap-1 sm:gap-2 mb-4">
+        <div class="text-center font-semibold text-gray-600 py-2 text-xs sm:text-sm"><span class="hidden sm:inline">Senin</span><span class="sm:hidden">Sen</span></div>
+        <div class="text-center font-semibold text-gray-600 py-2 text-xs sm:text-sm"><span class="hidden sm:inline">Selasa</span><span class="sm:hidden">Sel</span></div>
+        <div class="text-center font-semibold text-gray-600 py-2 text-xs sm:text-sm"><span class="hidden sm:inline">Rabu</span><span class="sm:hidden">Rab</span></div>
+        <div class="text-center font-semibold text-gray-600 py-2 text-xs sm:text-sm"><span class="hidden sm:inline">Kamis</span><span class="sm:hidden">Kam</span></div>
+        <div class="text-center font-semibold text-gray-600 py-2 text-xs sm:text-sm"><span class="hidden sm:inline">Jumat</span><span class="sm:hidden">Jum</span></div>
+        <div class="text-center font-semibold text-gray-600 py-2 text-xs sm:text-sm"><span class="hidden sm:inline">Sabtu</span><span class="sm:hidden">Sab</span></div>
+        <div class="text-center font-semibold text-gray-600 py-2 text-xs sm:text-sm"><span class="hidden sm:inline">Minggu</span><span class="sm:hidden">Min</span></div>
         
         <!-- Calendar Days -->
         @php
@@ -212,7 +212,7 @@
 
         <!-- Empty days for first week -->
         @for($i = 0; $i < $firstDayOfMonth; $i++)
-            <div class="h-24 border border-gray-200 rounded-lg"></div>
+            <div class="h-16 sm:h-24 border border-gray-200 rounded-lg"></div>
         @endfor
 
         <!-- Calendar Days -->
@@ -223,27 +223,27 @@
                 $dayEvents = $calendarEvents[$day] ?? [];
             @endphp
             
-            <div class="h-24 border border-gray-200 rounded-lg p-2 hover:bg-gray-50 cursor-pointer transition-colors
+            <div class="h-16 sm:h-24 border border-gray-200 rounded-lg p-1 sm:p-2 hover:bg-gray-50 cursor-pointer transition-colors
                 {{ $hasEvents ? 'bg-blue-50 border-blue-300' : '' }}
                 {{ $isToday ? 'ring-2 ring-primary-500' : '' }}">
-                <div class="flex justify-between items-start mb-1">
-                    <span class="text-sm font-medium {{ $hasEvents ? 'text-blue-700' : ($isToday ? 'text-primary-700' : 'text-gray-700') }}">{{ $day }}</span>
+                <div class="flex justify-between items-start mb-0.5 sm:mb-1">
+                    <span class="text-xs sm:text-sm font-medium {{ $hasEvents ? 'text-blue-700' : ($isToday ? 'text-primary-700' : 'text-gray-700') }}">{{ $day }}</span>
                     @if($hasEvents)
-                        <span class="w-2 h-2 bg-primary-500 rounded-full"></span>
+                        <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-primary-500 rounded-full"></span>
                     @endif
                 </div>
                 
                 <!-- Events -->
                 @foreach(array_slice($dayEvents, 0, 2) as $event)
-                    <div class="text-xs {{ $stylingHelpers['getEventColor']($event['type']) }} px-1 py-0.5 rounded mb-1 truncate"
+                    <div class="text-[9px] sm:text-xs {{ $stylingHelpers['getEventColor']($event['type']) }} px-0.5 sm:px-1 py-0.5 rounded mb-0.5 sm:mb-1 truncate"
                          title="{{ $event['nama_kegiatan'] }}">
                         {{ $event['type'] == 'kantor' ? 'Kantor' : $event['lokasi'] }}
                     </div>
                 @endforeach
                 
                 @if(count($dayEvents) > 2)
-                    <div class="text-xs text-gray-500 px-1 py-0.5">
-                        +{{ count($dayEvents) - 2 }} lainnya
+                    <div class="text-[8px] sm:text-xs text-gray-500 px-0.5 sm:px-1">
+                        +{{ count($dayEvents) - 2 }} <span class="hidden sm:inline">lainnya</span>
                     </div>
                 @endif
             </div>
